@@ -31,11 +31,11 @@ public class Crosswords {
                         && (col<m-2 && line.charAt(col+1) == '.' && line.charAt(col+2) == '.')) // Next two spaces are clear
                     sols.add(new Clue(row+1,col+1));
                 if (oldLine != null && lastLine != null) {
-                    if (row < 3) {
+                    if (row < 2) {
                         continue;
-                    } else if (row == 3) {
-                        if ((ancientLine.charAt(col) == '.') // Current space is clear
-                                && (oldLine.charAt(col) == '.' && lastLine.charAt(col) == '.')) {// Next two spaces are clear
+                    } else if (row == 2) {
+                        if ((oldLine.charAt(col) == '.') // Current space is clear
+                                && (lastLine.charAt(col) == '.' && line.charAt(col) == '.')) {// Next two spaces are clear
                             sols.add(new Clue(1,col+1));
                         }
                     } else if ((ancientLine.charAt(col) == '#') // Next to a wall
