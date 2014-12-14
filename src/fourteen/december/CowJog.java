@@ -23,9 +23,12 @@ public class CowJog {
         }
         
         int count = 0;
-        for (int i=0;i<n;i++) {
-            if (speeds[i] == speeds[speeds.length-1])
+        int groupSpeed = Integer.MAX_VALUE;
+        for (int i=n-1;i>=0;i--) {
+            if (speeds[i] <= groupSpeed) {
                 count++;
+                groupSpeed = speeds[i];
+            }
         }
         
         BufferedWriter writer = new BufferedWriter(new FileWriter("cowjog.out"));
