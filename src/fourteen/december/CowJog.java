@@ -1,3 +1,5 @@
+package fourteen.december;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -12,23 +14,22 @@ public class CowJog {
         
         int n = Integer.parseInt(reader.readLine());
         
-        int numSlowest = 0;
-        int slowest = Integer.MAX_VALUE;
+        int[] speeds = new int[n];
         
         String line;
         for (int i=0;i<n;i++) {
             line = reader.readLine();
-            int speed = Integer.parseInt(line.substring(line.indexOf(' ')+1));
-            if (speed < slowest) {
-                slowest = speed;
-                numSlowest = 0;
-            }
-            if (speed == slowest)
-                numSlowest++;
+            speeds[i] = Integer.parseInt(line.substring(line.indexOf(' ')+1));
+        }
+        
+        int count = 0;
+        for (int i=0;i<n;i++) {
+            if (speeds[i] == speeds[speeds.length-1])
+                count++;
         }
         
         BufferedWriter writer = new BufferedWriter(new FileWriter("cowjog.out"));
-        writer.write(String.valueOf(numSlowest));
+        writer.write(String.valueOf(count));
         writer.flush();
     }
 }
