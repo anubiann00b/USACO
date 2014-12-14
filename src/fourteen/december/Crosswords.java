@@ -12,7 +12,7 @@ import java.util.TreeSet;
 public class Crosswords {
     
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("crosswords.in")); 
+        BufferedReader reader = new BufferedReader(new FileReader("crosswords.in"));
         
         SortedSet<Clue> sols = new TreeSet<Clue>();
         String line = reader.readLine();
