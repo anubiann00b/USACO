@@ -36,7 +36,7 @@ public class Learning {
                 last = next;
                 next = cows.poll();
                 if (next == null) {
-                    spottedCounter += b-i;
+                    spottedCounter += last.spotted ? b-i+1 : 0;
                     break;
                 }
             }
@@ -48,7 +48,6 @@ public class Learning {
                 spottedCounter += last.spotted ? 1 : 0;
             else
                 spottedCounter += next.spotted ? 1 : 0;
-                
         }
         
         BufferedWriter writer = new BufferedWriter(new FileWriter("learning.out"));
