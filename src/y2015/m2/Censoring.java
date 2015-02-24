@@ -14,19 +14,13 @@ public class Censoring {
         String str = reader.readLine();
         String censor = reader.readLine();
         
-        for (int i=0;i<str.length();i++) {
-            for (int j=0;j<censor.length();j++) {
-                if (str.length() <= i+j)
-                    break;
-                if (str.charAt(i+j) != censor.charAt(j))
-                    break;
-                if (j == censor.length()-1) {
-                    str = str.substring(0, i).concat(str.substring(i+censor.length(), str.length()));
-                    i -= censor.length();
-                    if (i < 0)
-                        i = 0;
-                }
-            }
+        for (int i=0;i<str.length()-censor.length();i++) {
+            if (!str.regionMatches(i, censor, 0, censor.length()))
+                continue;
+            str = str.substring(0, i).concat(str.substring(i+censor.length(), str.length()));
+            i -= censor.length()+1;
+            if (i < 0)
+                i = 0;
         }
         
         BufferedWriter writer = new BufferedWriter(new FileWriter("censor.out"));
