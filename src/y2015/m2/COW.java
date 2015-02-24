@@ -10,47 +10,26 @@ public class COW {
     
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("cow.in"));
-        int length = Integer.parseInt(reader.readLine())-1;
+        int length = Integer.parseInt(reader.readLine());
         String str = reader.readLine();
         
-        int start = length;
-        int end = 0;
+        long numC = 0;
+        long numCO = 0;
+        long numCOW = 0;
         
         // Find the first C
         for (int i=0;i<length;i++) {
             char c = str.charAt(i);
-            if (c == 'C') {
-                start = i;
-                break;
-            }
-        }
-        
-        // Find the last W
-        for (int i=length;i>=0;i--) {
-            char c = str.charAt(i);
-            if (c == 'W') {
-                end = i;
-                break;
-            }
-        }
-        
-        long countC = 0;
-        long countO = 0;
-        long countW = 0;
-        
-        // Count COW's
-        for (int i=start;i<=end;i++) {
-            char c = str.charAt(i);
             if (c == 'C')
-                countC++;
+                numC++;
             else if (c == 'O')
-                countO++;
+                numCO += numC;
             else if (c == 'W')
-                countW++;
+                numCOW += numCO;
         }
         
         BufferedWriter writer = new BufferedWriter(new FileWriter("cow.out"));
-        writer.write(String.valueOf(countC*countO*countW));
+        writer.write(String.valueOf(numCOW));
         writer.flush();
     }
 }
