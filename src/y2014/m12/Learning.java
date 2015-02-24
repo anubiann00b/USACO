@@ -1,4 +1,4 @@
-package fourteen.december;
+package y2014.m12;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
